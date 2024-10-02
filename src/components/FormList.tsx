@@ -1,16 +1,16 @@
 import { useState } from "react"
 
 type FormListProps = {
-    setItemList: (updateFn: (prevItems: string[]) => string[]) => void;
+    setItemList: (itemList: string[]) => void;
+    itemList: string[]
 }
 
-const FormList = ({ setItemList }: FormListProps) => {
+const FormList = ({ setItemList, itemList }: FormListProps) => {
     const [item, setItem] = useState<string>('')
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setItemList((prevItems) => [...prevItems, item]);
-        setItem('');
+        setItemList([...itemList, item]);
     };
 
     return (
